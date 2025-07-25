@@ -1,123 +1,170 @@
-local Players = game:GetService("Players")
-local Lighting = game:GetService("Lighting")
-local LocalPlayer = Players.LocalPlayer
+--[[
+ .____                  ________ ___.    _____                           __                
+ |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
+ |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
+ |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
+ |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
+         \/          \/         \/    \/                \/     \/     \/                   
+          \_Welcome to LuaObfuscator.com   (Alpha 0.10.9) ~  Much Love, Ferib 
 
-local videoLink = "https://youtu.be/YX_J8RkN7fQ"
-local discordLink = "https://discord.gg/katoscript"
+]]--
 
--- GUI SETUP
-local gui = Instance.new("ScreenGui", LocalPlayer:WaitForChild("PlayerGui"))
-gui.Name = "ScriptPromoGUI"
-gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
--- Blur effect
-local blur = Instance.new("BlurEffect", Lighting)
-blur.Name = "PromoBlur"
-blur.Size = 10
-
-local function closeUI()
-	if Lighting:FindFirstChild("PromoBlur") then
-		Lighting.PromoBlur:Destroy()
+local TABLE_TableIndirection = {};
+TABLE_TableIndirection["v0%0"] = game:GetService("Players");
+TABLE_TableIndirection["v1%0"] = game:GetService("Lighting");
+TABLE_TableIndirection["v2%0"] = TABLE_TableIndirection["v0%0"].LocalPlayer;
+TABLE_TableIndirection["v3%0"] = "https://youtu.be/YX_J8RkN7fQ";
+TABLE_TableIndirection["v4%0"] = "https://discord.gg/katoscript";
+TABLE_TableIndirection["v5%0"] = Instance.new("ScreenGui", TABLE_TableIndirection["v2%0"]:WaitForChild("PlayerGui"));
+TABLE_TableIndirection["v5%0"].Name = "ScriptPromoGUI";
+TABLE_TableIndirection["v5%0"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+TABLE_TableIndirection["v9%0"] = Instance.new("BlurEffect", TABLE_TableIndirection["v1%0"]);
+TABLE_TableIndirection["v9%0"].Name = "PromoBlur";
+TABLE_TableIndirection["v9%0"].Size = 26 - 16;
+local function v12()
+	TABLE_TableIndirection["v78%0"] = 0 - 0;
+	TABLE_TableIndirection["v79%0"] = nil;
+	while true do
+		if (TABLE_TableIndirection["v78%0"] == 0) then
+			TABLE_TableIndirection["v79%0"] = 0 - 0;
+			while true do
+				if (TABLE_TableIndirection["v79%0"] == ((414 + 154) - ((1364 - (915 + 82)) + 201))) then
+					if TABLE_TableIndirection["v1%0"]:FindFirstChild("PromoBlur") then
+						TABLE_TableIndirection["v1%0"].PromoBlur:Destroy();
+					end
+					TABLE_TableIndirection["v5%0"]:Destroy();
+					break;
+				end
+			end
+			break;
+		end
 	end
-	gui:Destroy()
 end
-
--- Frame
-local frame = Instance.new("Frame", gui)
-frame.Size = UDim2.new(0, 320, 0, 260)
-frame.Position = UDim2.new(0.5, -160, 0.5, -130)
-frame.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
-frame.BackgroundTransparency = 0.05
-frame.Active = true
-frame.Draggable = true
-Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 12)
-local stroke = Instance.new("UIStroke", frame)
-stroke.Color = Color3.fromRGB(110, 0, 255)
-stroke.Thickness = 2
-
--- Avatar
-local avatar = Instance.new("ImageLabel", frame)
-avatar.Size = UDim2.new(0, 70, 0, 70)
-avatar.Position = UDim2.new(0.5, -35, 0, 10)
-avatar.BackgroundTransparency = 1
-avatar.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. LocalPlayer.UserId .. "&width=100&height=100&format=png"
-
--- Title
-local title = Instance.new("TextLabel", frame)
-title.Size = UDim2.new(1, -20, 0, 30)
-title.Position = UDim2.new(0, 10, 0, 90)
-title.Text = "Script en mi video"
-title.Font = Enum.Font.GothamBold
-title.TextSize = 18
-title.TextColor3 = Color3.fromRGB(255, 255, 255)
-title.BackgroundTransparency = 1
-
--- Notification label (superior izquierda)
-local notif = Instance.new("TextLabel", gui)
-notif.Size = UDim2.new(0, 250, 0, 28)
-notif.Position = UDim2.new(0, 10, 0, 10)
-notif.AnchorPoint = Vector2.new(0, 0)
-notif.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
-notif.Text = ""
-notif.TextSize = 14
-notif.Font = Enum.Font.Gotham
-notif.TextColor3 = Color3.fromRGB(255, 255, 255)
-notif.Visible = false
-Instance.new("UICorner", notif).CornerRadius = UDim.new(0, 8)
-
-local function showMessage(msg, duration)
-	notif.Text = msg
-	notif.Visible = true
-	notif.BackgroundTransparency = 0.2
-	notif.TextTransparency = 0
-	task.wait(duration or 2)
-	notif.Visible = false
+TABLE_TableIndirection["v13%0"] = Instance.new("Frame", TABLE_TableIndirection["v5%0"]);
+TABLE_TableIndirection["v13%0"].Size = UDim2.new((2624 - 1697) - (214 + 416 + 297), (106 - 25) + 239, (1187 - (1069 + 118)) + (0 - 0), 568 - 308);
+TABLE_TableIndirection["v13%0"].Position = UDim2.new((153.5 + 724) - ((500 - 218) + 591 + 4), -160, (2428.5 - (368 + 423)) - (1523 + (358 - 244)), -((135 - (10 + 8)) + (49 - 36)));
+TABLE_TableIndirection["v13%0"].BackgroundColor3 = Color3.fromRGB((470 - (416 + 26)) - 8, 1085 - ((216 - 148) + 428 + 569), 30);
+TABLE_TableIndirection["v13%0"].BackgroundTransparency = (2247.05 - 977) - ((664 - (145 + 293)) + (1474 - (44 + 386)));
+TABLE_TableIndirection["v13%0"].Active = true;
+TABLE_TableIndirection["v13%0"].Draggable = true;
+Instance.new("UICorner", TABLE_TableIndirection["v13%0"]).CornerRadius = UDim.new((1486 - (998 + 488)) - (0 + 0), 129 - (27 + 5 + (857 - (201 + 571))));
+TABLE_TableIndirection["v21%0"] = Instance.new("UIStroke", TABLE_TableIndirection["v13%0"]);
+TABLE_TableIndirection["v21%0"].Color = Color3.fromRGB((1246 - (116 + 1022)) + (8 - 6), 0 + 0 + 0, 1212 - ((3256 - 2364) + 65));
+TABLE_TableIndirection["v21%0"].Thickness = 4 - 2;
+TABLE_TableIndirection["v24%0"] = Instance.new("ImageLabel", TABLE_TableIndirection["v13%0"]);
+TABLE_TableIndirection["v24%0"].Size = UDim2.new(0 - 0, (988 - (814 + 45)) - 59, (0 - 0) - (0 + 0), (149 + 271) - ((972 - (261 + 624)) + 263));
+TABLE_TableIndirection["v24%0"].Position = UDim2.new((319.5 - 139) - ((1147 - (1020 + 60)) + (1536 - (630 + 793))), -(118 - 83), (0 - 0) + 0 + 0, (82 - 58) - (1761 - (760 + 987)));
+TABLE_TableIndirection["v24%0"].BackgroundTransparency = (1914 - (1789 + 124)) + (766 - (745 + 21));
+TABLE_TableIndirection["v24%0"].Image = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. TABLE_TableIndirection["v2%0"].UserId .. "&width=100&height=100&format=png";
+TABLE_TableIndirection["v29%0"] = Instance.new("TextLabel", TABLE_TableIndirection["v13%0"]);
+TABLE_TableIndirection["v29%0"].Size = UDim2.new((2 + 1) - (5 - 3), -(78 - 58), (8 + 944) - (630 + 172 + (1205 - (87 + 968))), 132 - 102);
+TABLE_TableIndirection["v29%0"].Position = UDim2.new((0 + 0) - (0 - 0), 18 - 8, 0 + (1413 - (447 + 966)), 90);
+TABLE_TableIndirection["v29%0"].Text = "🧠 Script en mi video";
+TABLE_TableIndirection["v29%0"].Font = Enum.Font.GothamBold;
+TABLE_TableIndirection["v29%0"].TextSize = (2778 - 1763) - (915 + (1899 - (1703 + 114)));
+TABLE_TableIndirection["v29%0"].TextColor3 = Color3.fromRGB(722 - (1168 - (376 + 325)), 417 - 162, 149 + (325 - 219));
+TABLE_TableIndirection["v29%0"].BackgroundTransparency = (1 + 0) - (0 - 0);
+TABLE_TableIndirection["v38%0"] = Instance.new("TextLabel", TABLE_TableIndirection["v5%0"]);
+TABLE_TableIndirection["v38%0"].Size = UDim2.new((1201 - (9 + 5)) - ((1445 - (85 + 291)) + 118), (1832 - (243 + 1022)) - 317, 0 - 0, (51 + 10) - (1213 - (1123 + 57)));
+TABLE_TableIndirection["v38%0"].Position = UDim2.new(0 + 0 + 0, 264 - (163 + 91), 1930 - (1869 + 61), (5 + 12) - 7);
+TABLE_TableIndirection["v38%0"].AnchorPoint = Vector2.new(0 + 0, (2785 - 1994) - (368 + 423));
+TABLE_TableIndirection["v38%0"].BackgroundColor3 = Color3.fromRGB(94 - (97 - 33), 48 - (10 + 8), (21 + 132) - (154 - 41));
+TABLE_TableIndirection["v38%0"].Text = "";
+TABLE_TableIndirection["v38%0"].TextSize = (429 + 27) - ((1890 - (1329 + 145)) + (997 - (140 + 831)));
+TABLE_TableIndirection["v38%0"].Font = Enum.Font.Gotham;
+TABLE_TableIndirection["v38%0"].TextColor3 = Color3.fromRGB((2664 - (1409 + 441)) - (1277 - (15 + 703)), 110 + 145, 119 + 136);
+TABLE_TableIndirection["v38%0"].Visible = false;
+Instance.new("UICorner", TABLE_TableIndirection["v38%0"]).CornerRadius = UDim.new((438 - (262 + 176)) - 0, 1729 - (345 + 1376));
+local function v50(v80, v81)
+	TABLE_TableIndirection["v82%0"] = 0;
+	TABLE_TableIndirection["v83%0"] = nil;
+	while true do
+		if (TABLE_TableIndirection["v82%0"] == (688 - (198 + 490))) then
+			TABLE_TableIndirection["v83%0"] = (1934 - 1496) - ((347 - 202) + 293);
+			while true do
+				if (TABLE_TableIndirection["v83%0"] == ((1638 - (696 + 510)) - (44 + (809 - 423)))) then
+					task.wait(v81 or ((2750 - (1091 + 171)) - (998 + 79 + 409)));
+					TABLE_TableIndirection["v38%0"].Visible = false;
+					break;
+				end
+				if (TABLE_TableIndirection["v83%0"] == 1) then
+					TABLE_TableIndirection["v88%0"] = 0 - 0;
+					while true do
+						if (TABLE_TableIndirection["v88%0"] == (0 - 0)) then
+							TABLE_TableIndirection["v38%0"].BackgroundTransparency = 0.2 + (374 - (123 + 251));
+							TABLE_TableIndirection["v38%0"].TextTransparency = 0;
+							TABLE_TableIndirection["v88%0"] = 1;
+						end
+						if (TABLE_TableIndirection["v88%0"] == (4 - 3)) then
+							TABLE_TableIndirection["v83%0"] = 2 + (698 - (208 + 490));
+							break;
+						end
+					end
+				end
+				if (TABLE_TableIndirection["v83%0"] == (772 - (17 + 184 + 255 + 316))) then
+					TABLE_TableIndirection["v38%0"].Text = v80;
+					TABLE_TableIndirection["v38%0"].Visible = true;
+					TABLE_TableIndirection["v83%0"] = (1975 - (660 + 176)) - (14 + 102 + (1224 - (14 + 188)));
+				end
+			end
+			break;
+		end
+	end
 end
-
--- Ver Video Button
-local videoBtn = Instance.new("TextButton", frame)
-videoBtn.Size = UDim2.new(0.8, 0, 0, 38)
-videoBtn.Position = UDim2.new(0.1, 0, 0, 135)
-videoBtn.Text = "🎬 Ver el video"
-videoBtn.Font = Enum.Font.GothamBold
-videoBtn.TextSize = 16
-videoBtn.BackgroundColor3 = Color3.fromRGB(90, 40, 200)
-videoBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-Instance.new("UICorner", videoBtn).CornerRadius = UDim.new(0, 8)
-
--- Discord Button
-local discordBtn = Instance.new("TextButton", frame)
-discordBtn.Size = UDim2.new(0.8, 0, 0, 38)
-discordBtn.Position = UDim2.new(0.1, 0, 0, 190)
-discordBtn.Text = "💬 Unirse al Discord"
-discordBtn.Font = Enum.Font.GothamBold
-discordBtn.TextSize = 16
-discordBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 60)
-discordBtn.TextColor3 = Color3.fromRGB(180, 220, 255)
-Instance.new("UICorner", discordBtn).CornerRadius = UDim.new(0, 8)
-
--- Close Button
-local closeBtn = Instance.new("TextButton", frame)
-closeBtn.Size = UDim2.new(0, 24, 0, 24)
-closeBtn.Position = UDim2.new(1, -30, 0, 8)
-closeBtn.Text = "X"
-closeBtn.Font = Enum.Font.GothamBold
-closeBtn.TextSize = 14
-closeBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 70)
-closeBtn.TextColor3 = Color3.fromRGB(255, 80, 80)
-Instance.new("UICorner", closeBtn).CornerRadius = UDim.new(1, 0)
-
--- Actions
-videoBtn.MouseButton1Click:Connect(function()
-	setclipboard(videoLink)
-	showMessage("📋 Enlace del video copiado.")
-end)
-
-discordBtn.MouseButton1Click:Connect(function()
-	setclipboard(discordLink)
-	showMessage("📋 Enlace de Discord copiado.")
-end)
-
-closeBtn.MouseButton1Click:Connect(function()
-	closeUI()
-end)
+TABLE_TableIndirection["v51%0"] = Instance.new("TextButton", TABLE_TableIndirection["v13%0"]);
+TABLE_TableIndirection["v51%0"].Size = UDim2.new((675.8 - (534 + 141)) - (0 + 0), 0 + 0 + 0 + 0, (0 - 0) - 0, (212 - 78) - 96);
+TABLE_TableIndirection["v51%0"].Position = UDim2.new(0.1 - 0, 859 - (438 + 376 + 45), (0 + 0) - (396 - (115 + 281)), 135);
+TABLE_TableIndirection["v51%0"].Text = "🎬 Ver el video";
+TABLE_TableIndirection["v51%0"].Font = Enum.Font.GothamBold;
+TABLE_TableIndirection["v51%0"].TextSize = 37 - 21;
+TABLE_TableIndirection["v51%0"].BackgroundColor3 = Color3.fromRGB(5 + 85, 13 + 2 + (60 - 35), (3978 - 2893) - (261 + 624));
+TABLE_TableIndirection["v51%0"].TextColor3 = Color3.fromRGB(453 - 198, 1335 - ((1887 - (550 + 317)) + (86 - 26)), 1678 - ((885 - 255) + 793));
+Instance.new("UICorner", TABLE_TableIndirection["v51%0"]).CornerRadius = UDim.new((0 - 0) - (285 - (134 + 151)), (1702 - (970 + 695)) - (54 - 25));
+TABLE_TableIndirection["v60%0"] = Instance.new("TextButton", TABLE_TableIndirection["v13%0"]);
+TABLE_TableIndirection["v60%0"].Size = UDim2.new((1990.8 - (582 + 1408)) + (0 - 0), 0 - 0, (0 - 0) - (1824 - (1195 + 629)), (2360 - 575) - ((1001 - (187 + 54)) + (1767 - (162 + 618))));
+TABLE_TableIndirection["v60%0"].Position = UDim2.new((1341.1 + 572) - (1192 + 597 + 124), 766 - (745 + 21), (0 - 0) + (0 - 0), (41 + 481) - (1968 - (1373 + 263)));
+TABLE_TableIndirection["v60%0"].Text = "💬 Unirse al Discord";
+TABLE_TableIndirection["v60%0"].Font = Enum.Font.GothamBold;
+TABLE_TableIndirection["v60%0"].TextSize = 1016 - (451 + 549);
+TABLE_TableIndirection["v60%0"].BackgroundColor3 = Color3.fromRGB((50 + 106) - 116, 40, (1 - 0) + (98 - 39));
+TABLE_TableIndirection["v60%0"].TextColor3 = Color3.fromRGB((1526 - (746 + 638)) + 15 + 23, 334 - 114, 255);
+Instance.new("UICorner", TABLE_TableIndirection["v60%0"]).CornerRadius = UDim.new((1396 - (218 + 123)) - ((1668 - (1535 + 46)) + 968), 8);
+TABLE_TableIndirection["v69%0"] = Instance.new("TextButton", TABLE_TableIndirection["v13%0"]);
+TABLE_TableIndirection["v69%0"].Size = UDim2.new((0 + 0) - (0 + 0), 584 - (306 + 254), 0 + 0, (42 - 20) + (1469 - (899 + 568)));
+TABLE_TableIndirection["v69%0"].Position = UDim2.new(2 - (1 + 0), -(72 - 42), 603 - (268 + 335), 1421 - ((737 - (60 + 230)) + (1538 - (426 + 146))));
+TABLE_TableIndirection["v69%0"].Text = "X";
+TABLE_TableIndirection["v69%0"].Font = Enum.Font.GothamBold;
+TABLE_TableIndirection["v69%0"].TextSize = 14;
+TABLE_TableIndirection["v69%0"].BackgroundColor3 = Color3.fromRGB((20 + 144) - (1560 - (282 + 1174)), 871 - (569 + 242), (5435 - 3548) - (1703 + 114));
+TABLE_TableIndirection["v69%0"].TextColor3 = Color3.fromRGB(15 + 240, (1805 - (706 + 318)) - ((1627 - (721 + 530)) + (1596 - (945 + 326))), 131 - (127 - 76));
+Instance.new("UICorner", TABLE_TableIndirection["v69%0"]).CornerRadius = UDim.new((2 + 0) - 1, (700 - (271 + 429)) + 0 + 0);
+TABLE_TableIndirection["v51%0"].MouseButton1Click:Connect(function()
+	TABLE_TableIndirection["v84%0"] = 1500 - (1408 + 92);
+	TABLE_TableIndirection["v85%0"] = nil;
+	while true do
+		if (TABLE_TableIndirection["v84%0"] == (1086 - (461 + 625))) then
+			TABLE_TableIndirection["v85%0"] = (1288 - (993 + 295)) - (0 + 0);
+			while true do
+				if (TABLE_TableIndirection["v85%0"] == (1171 - (418 + 753))) then
+					setclipboard(TABLE_TableIndirection["v3%0"]);
+					v50("📋 Enlace del video copiado.");
+					break;
+				end
+			end
+			break;
+		end
+	end
+end);
+TABLE_TableIndirection["v60%0"].MouseButton1Click:Connect(function()
+	TABLE_TableIndirection["v86%0"] = 0 + 0;
+	while true do
+		if (TABLE_TableIndirection["v86%0"] == 0) then
+			setclipboard(TABLE_TableIndirection["v4%0"]);
+			v50("📋 Enlace de Discord copiado.");
+			break;
+		end
+	end
+end);
+TABLE_TableIndirection["v69%0"].MouseButton1Click:Connect(function()
+	v12();
+end);
