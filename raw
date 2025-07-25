@@ -1,0 +1,124 @@
+-- 📦 Servicios
+local A1 = game:GetService("TweenService")
+local A2 = game:GetService("Lighting")
+local A3 = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- 🌫 Efecto de blur
+local B1 = Instance.new("BlurEffect")
+B1.Size = 0
+B1.Parent = A2
+
+-- 🖼 GUI
+local B2 = Instance.new("ScreenGui")
+B2.Name = "ConsigueVideoGui"
+B2.ResetOnSpawn = false
+B2.Parent = A3
+
+-- Contenedor principal
+local B3 = Instance.new("Frame", B2)
+B3.Size = UDim2.new(0, 420, 0, 260)
+B3.Position = UDim2.new(0.5, 0, 0.5, 0)
+B3.AnchorPoint = Vector2.new(0.5, 0.5)
+B3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+B3.BackgroundTransparency = 1
+B3.Visible = false
+Instance.new("UICorner", B3).CornerRadius = UDim.new(0, 25)
+
+-- 🌟 Sombra elegante
+local B4 = Instance.new("ImageLabel", B3)
+B4.Image = "rbxassetid://1316045217"
+B4.Size = UDim2.new(1, 60, 1, 60)
+B4.Position = UDim2.new(0, -30, 0, -30)
+B4.BackgroundTransparency = 1
+B4.ImageTransparency = 0.6
+B4.ScaleType = Enum.ScaleType.Slice
+B4.SliceCenter = Rect.new(10, 10, 118, 118)
+B4.ZIndex = 0
+
+-- 🏷 Título
+local B5 = Instance.new("TextLabel", B3)
+B5.Text = "🚀 Consíguelo en mi video"
+B5.Font = Enum.Font.GothamBold
+B5.TextSize = 26
+B5.TextColor3 = Color3.fromRGB(25, 25, 25)
+B5.BackgroundTransparency = 1
+B5.Size = UDim2.new(1, 0, 0, 50)
+
+-- 🔘 Función para crear botones
+local function F1(X3, X4, X5, X6, X7)
+	local B6 = Instance.new("TextButton", B3)
+	B6.Name = X3
+	B6.Text = X4
+	B6.Font = Enum.Font.Gotham
+	B6.TextSize = 18
+	B6.TextColor3 = Color3.fromRGB(255, 255, 255)
+	B6.BackgroundColor3 = X5
+	B6.Size = X6
+	B6.Position = X7
+	B6.AnchorPoint = Vector2.new(0.5, 0)
+	Instance.new("UICorner", B6).CornerRadius = UDim.new(0, 12)
+	return B6
+end
+
+-- Botones estilizados
+local B7 = F1("YouTube", "🎬 Ver Video", Color3.fromRGB(229, 57, 53), UDim2.new(0, 140, 0, 45), UDim2.new(0.33, 0, 0.35, 0))
+local B8 = F1("Discord", "💬 Discord", Color3.fromRGB(88, 101, 242), UDim2.new(0, 140, 0, 45), UDim2.new(0.66, 0, 0.35, 0))
+local B9 = F1("Cerrar", "✖ Cerrar", Color3.fromRGB(38, 50, 56), UDim2.new(0, 200, 0, 45), UDim2.new(0.5, 0, 0.72, 0))
+
+-- 🔔 Notificación personalizada
+local function F2(X8, X4)
+	pcall(function()
+		game.StarterGui:SetCore("SendNotification", {
+			Title = X8,
+			Text = X4,
+			Duration = 4
+		})
+	end)
+end
+
+-- 🔗 Manejo de enlaces
+local function F3(X1, X2)
+	if identifyexecutor and identifyexecutor() == "Delta" and getgenv().DeltaHttp then
+		getgenv().DeltaHttp:OpenUrl(X1)
+		F2("🌐 Redirigiendo...", X2 .. " en el navegador.")
+	else
+		setclipboard(X1)
+		F2("✅ Copiado", X2 .. " copiado al portapapeles.")
+	end
+end
+
+-- 🎞 Animaciones de blur
+local function F4(t)
+	A1:Create(B1, TweenInfo.new(0.4), {Size = t}):Play()
+end
+
+local function F5()
+	B3.Visible = true
+	B3.BackgroundTransparency = 1
+	F4(20)
+	A1:Create(B3, TweenInfo.new(0.4), {BackgroundTransparency = 0}):Play()
+end
+
+local function F6()
+	local B10 = A1:Create(B3, TweenInfo.new(0.4), {BackgroundTransparency = 1})
+	B10:Play()
+	F4(0)
+	B10.Completed:Connect(function()
+		B3.Visible = false
+	end)
+end
+
+-- 📎 Enlaces y acciones
+B7.MouseButton1Click:Connect(function()
+	F3("https://youtu.be/YX_J8RkN7fQ?si=ZHdKnbq8CiUK4Sdh", "YouTube")
+end)
+
+B8.MouseButton1Click:Connect(function()
+	F3("https://discord.gg/katoscript", "Discord")
+end)
+
+B9.MouseButton1Click:Connect(F6)
+
+-- ⏱ Mostrar GUI al cargar
+task.wait(1)
+F5()
