@@ -2,98 +2,62 @@ local Players = game:GetService("Players")
 local Lighting = game:GetService("Lighting")
 local LocalPlayer = Players.LocalPlayer
 
-local videoLink = "https://youtu.be/YX_J8RkN7fQ?si=ZHdKnbq8CiUK4Sdh"
+local videoLink = "https://youtu.be/YX_J8RkN7fQ"
 local discordLink = "https://discord.gg/katoscript"
 
--- GUI PRINCIPAL
+-- GUI SETUP
 local gui = Instance.new("ScreenGui", LocalPlayer:WaitForChild("PlayerGui"))
 gui.Name = "ScriptPromoGUI"
 gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
--- Blur
-local blur = Instance.new("BlurEffect")
-blur.Size = 15
-blur.Name = "GuiBlur"
-blur.Parent = Lighting
+-- Blur effect
+local blur = Instance.new("BlurEffect", Lighting)
+blur.Name = "PromoBlur"
+blur.Size = 10
 
--- Cierre con blur
 local function closeUI()
-	if Lighting:FindFirstChild("GuiBlur") then
-		Lighting.GuiBlur:Destroy()
+	if Lighting:FindFirstChild("PromoBlur") then
+		Lighting.PromoBlur:Destroy()
 	end
 	gui:Destroy()
 end
 
--- Frame principal
+-- Frame
 local frame = Instance.new("Frame", gui)
-frame.Size = UDim2.new(0, 320, 0, 240)
-frame.Position = UDim2.new(0.5, -160, 0.5, -120)
+frame.Size = UDim2.new(0, 320, 0, 260)
+frame.Position = UDim2.new(0.5, -160, 0.5, -130)
 frame.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
 frame.BackgroundTransparency = 0.05
 frame.Active = true
 frame.Draggable = true
-
 Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 12)
 local stroke = Instance.new("UIStroke", frame)
-stroke.Color = Color3.fromRGB(90, 0, 200)
+stroke.Color = Color3.fromRGB(110, 0, 255)
 stroke.Thickness = 2
-stroke.Transparency = 0.1
 
--- Avatar del jugador
+-- Avatar
 local avatar = Instance.new("ImageLabel", frame)
-avatar.Size = UDim2.new(0, 60, 0, 60)
-avatar.Position = UDim2.new(0.5, -30, 0, 10)
+avatar.Size = UDim2.new(0, 70, 0, 70)
+avatar.Position = UDim2.new(0.5, -35, 0, 10)
 avatar.BackgroundTransparency = 1
 avatar.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. LocalPlayer.UserId .. "&width=100&height=100&format=png"
 
--- Título
+-- Title
 local title = Instance.new("TextLabel", frame)
 title.Size = UDim2.new(1, -20, 0, 30)
-title.Position = UDim2.new(0, 10, 0, 75)
-title.Text = "🧠 SCRIPT EN MI VIDEO"
+title.Position = UDim2.new(0, 10, 0, 90)
+title.Text = "🧠 Script en mi video"
 title.Font = Enum.Font.GothamBold
 title.TextSize = 18
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
 title.BackgroundTransparency = 1
 
--- Botón Ver Video
-local videoBtn = Instance.new("TextButton", frame)
-videoBtn.Size = UDim2.new(0.8, 0, 0, 38)
-videoBtn.Position = UDim2.new(0.1, 0, 0, 120)
-videoBtn.Text = "🎬 Ver el Video"
-videoBtn.Font = Enum.Font.GothamBold
-videoBtn.TextSize = 16
-videoBtn.BackgroundColor3 = Color3.fromRGB(100, 40, 200)
-videoBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-Instance.new("UICorner", videoBtn).CornerRadius = UDim.new(0, 8)
-
--- Botón Discord
-local discordBtn = Instance.new("TextButton", frame)
-discordBtn.Size = UDim2.new(0.8, 0, 0, 38)
-discordBtn.Position = UDim2.new(0.1, 0, 0, 170)
-discordBtn.Text = "💬 Unirse a Discord"
-discordBtn.Font = Enum.Font.Gotham
-discordBtn.TextSize = 16
-discordBtn.BackgroundColor3 = Color3.fromRGB(30, 30, 45)
-discordBtn.TextColor3 = Color3.fromRGB(180, 200, 255)
-Instance.new("UICorner", discordBtn).CornerRadius = UDim.new(0, 8)
-
--- Botón Cerrar
-local closeBtn = Instance.new("TextButton", frame)
-closeBtn.Size = UDim2.new(0, 24, 0, 24)
-closeBtn.Position = UDim2.new(1, -30, 0, 10)
-closeBtn.Text = "X"
-closeBtn.Font = Enum.Font.GothamBold
-closeBtn.TextSize = 14
-closeBtn.BackgroundColor3 = Color3.fromRGB(50, 50, 60)
-closeBtn.TextColor3 = Color3.fromRGB(255, 80, 80)
-Instance.new("UICorner", closeBtn).CornerRadius = UDim.new(1, 0)
-
--- Notificación
+-- Notification label (superior izquierda)
 local notif = Instance.new("TextLabel", gui)
 notif.Size = UDim2.new(0, 250, 0, 28)
-notif.Position = UDim2.new(0.5, -125, 1, -60)
-notif.BackgroundColor3 = Color3.fromRGB(35, 35, 45)
+notif.Position = UDim2.new(0, 10, 0, 10)
+notif.AnchorPoint = Vector2.new(0, 0)
+notif.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
 notif.Text = ""
 notif.TextSize = 14
 notif.Font = Enum.Font.Gotham
@@ -101,34 +65,59 @@ notif.TextColor3 = Color3.fromRGB(255, 255, 255)
 notif.Visible = false
 Instance.new("UICorner", notif).CornerRadius = UDim.new(0, 8)
 
-local function showMessage(text, duration)
-	notif.Text = text
+local function showMessage(msg, duration)
+	notif.Text = msg
 	notif.Visible = true
 	notif.BackgroundTransparency = 0.2
 	notif.TextTransparency = 0
-	notif:TweenPosition(UDim2.new(0.5, -125, 1, -90), "Out", "Quad", 0.3, true)
 	task.wait(duration or 2)
-	notif:TweenPosition(UDim2.new(0.5, -125, 1, -60), "Out", "Quad", 0.3, true)
 	notif.Visible = false
 end
 
--- Abrir video automáticamente si es Delta
+-- Ver Video Button
+local videoBtn = Instance.new("TextButton", frame)
+videoBtn.Size = UDim2.new(0.8, 0, 0, 38)
+videoBtn.Position = UDim2.new(0.1, 0, 0, 135)
+videoBtn.Text = "🎬 Ver el video"
+videoBtn.Font = Enum.Font.GothamBold
+videoBtn.TextSize = 16
+videoBtn.BackgroundColor3 = Color3.fromRGB(90, 40, 200)
+videoBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+Instance.new("UICorner", videoBtn).CornerRadius = UDim.new(0, 8)
+
+-- Discord Button
+local discordBtn = Instance.new("TextButton", frame)
+discordBtn.Size = UDim2.new(0.8, 0, 0, 38)
+discordBtn.Position = UDim2.new(0.1, 0, 0, 190)
+discordBtn.Text = "💬 Unirse al Discord"
+discordBtn.Font = Enum.Font.GothamBold
+discordBtn.TextSize = 16
+discordBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 60)
+discordBtn.TextColor3 = Color3.fromRGB(180, 220, 255)
+Instance.new("UICorner", discordBtn).CornerRadius = UDim.new(0, 8)
+
+-- Close Button
+local closeBtn = Instance.new("TextButton", frame)
+closeBtn.Size = UDim2.new(0, 24, 0, 24)
+closeBtn.Position = UDim2.new(1, -30, 0, 8)
+closeBtn.Text = "X"
+closeBtn.Font = Enum.Font.GothamBold
+closeBtn.TextSize = 14
+closeBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 70)
+closeBtn.TextColor3 = Color3.fromRGB(255, 80, 80)
+Instance.new("UICorner", closeBtn).CornerRadius = UDim.new(1, 0)
+
+-- Actions
 videoBtn.MouseButton1Click:Connect(function()
-	if identifyexecutor and string.lower(identifyexecutor()) == "delta" then
-		loadstring(game:HttpGet(videoLink))() -- Delta soporta abrir links
-	else
-		setclipboard(videoLink)
-		showMessage("📋 Link del video copiado.")
-	end
+	setclipboard(videoLink)
+	showMessage("📋 Enlace del video copiado.")
 end)
 
--- Copiar Discord
 discordBtn.MouseButton1Click:Connect(function()
 	setclipboard(discordLink)
-	showMessage("📋 Link de Discord copiado.")
+	showMessage("📋 Enlace de Discord copiado.")
 end)
 
--- Cerrar GUI
 closeBtn.MouseButton1Click:Connect(function()
 	closeUI()
 end)
